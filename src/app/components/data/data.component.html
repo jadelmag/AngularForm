@@ -1,0 +1,103 @@
+<h4>Form <small>data</small></h4>
+<hr>
+<form [formGroup]="form" (ngSubmit)="save()">
+
+    <div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Name</label>
+            <div class="col-8">
+
+                <input formControlName="name" [ngClass]="( !form.get('name').valid ) ? 'is-invalid': 'is-valid'" class="form-control" type="text" placeholder="Name">
+                <div *ngIf="form.controls['name'].errors?.required" class="form-control-feedback">
+                    <span [ngClass]="(!form.controls['name'].touched) ? 'hidden': 'show'" class="text-red">Name is required</span>
+                </div>
+                <div *ngIf="form.controls['name'].errors?.minlength" class="form-control-feedback">
+                    <span [ngClass]="(!form.controls['name'].touched) ? 'hidden': 'show'" class="text-red">At least 5 characters</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Lastname</label>
+            <div class="col-8">
+
+                <input formControlName="lastname" [ngClass]="( !form.get('lastname').valid ) ? 'is-invalid': 'is-valid'" class="form-control" type="text" placeholder="Lastname">
+                <div *ngIf="form.controls['lastname'].errors?.required" class="form-control-feedback">
+                    <span [ngClass]="(!form.controls['lastname'].touched) ? 'hidden': 'show'" class="text-red">Lastname is required</span>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Email</label>
+            <div class="col-md-8">
+
+                <input formControlName="email" [ngClass]="( !form.get('email').valid ) ? 'is-invalid': 'is-valid'" class="form-control" type="email" placeholder="Email">
+                <div *ngIf="form.controls['email'].errors?.required" class="form-control-feedback">
+                    <span [ngClass]="(!form.controls['email'].touched) ? 'hidden': 'show'" class="text-red">Email is required</span>
+                </div>
+                <div *ngIf="form.controls['email'].errors?.pattern" class="form-control-feedback">
+                    <span [ngClass]="(!form.controls['email'].touched) ? 'hidden': 'show'" class="text-red">Email is not valid</span>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Username</label>
+            <div class="col-md-8">
+
+                <input formControlName="username" [ngClass]="( !form.get('username').valid ) ? 'is-invalid': 'is-valid'" class="form-control" type="text" placeholder="Username">
+                <div *ngIf="form.controls['username'].errors?.required" class="form-control-feedback">
+                    <span [ngClass]="(!form.controls['username'].touched) ? 'hidden': 'show'" class="text-red">Username is required</span>
+                </div>
+                <div *ngIf="form.controls['username'].errors?.exist" class="form-control-feedback">
+                    <span [ngClass]="(!form.controls['username'].touched) ? 'hidden': 'show'" class="text-red">Username already exist</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Password</label>
+            <div class="col-md-8">
+
+                <input formControlName="password1" [ngClass]="( !form.get('password1').valid ) ? 'is-invalid': 'is-valid'" class="form-control" type="password" placeholder="Password">
+                <div *ngIf="form.controls['password1'].errors?.required" class="form-control-feedback">
+                    <span [ngClass]="(!form.controls['password1'].touched) ? 'hidden': 'show'" class="text-red">Password is required</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Confirm Password</label>
+            <div class="col-md-8">
+
+                <input formControlName="password2" [ngClass]="( !form.get('password2').valid ) ? 'is-invalid': 'is-valid'" class="form-control" type="password" placeholder="Confirm Password">
+                <div *ngIf="form.controls['password2'].errors?.MatchPassword" class="form-control-feedback">
+                    <span [ngClass]="(!form.controls['password1'].touched) ? 'hidden': 'show'" class="text-red">Passwords not match</span>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label">&nbsp;</label>
+        <div class="input-group col-md-8">
+            <button type="reset" class="btn btn-outline-danger w20">
+                Clear
+            </button>
+            <button [disabled]="form.valid" type="submit" class="btn btn-outline-primary w80">
+                Guardar
+            </button>
+        </div>
+    </div>
+
+
+    {{ form.valid }} <br> {{ form.status }}
+</form>

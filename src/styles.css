@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+
+.main-container {
+    margin-top: 50px;
+}
+
+.w80 {
+    width: 70%;
+}
+
+.w20 {
+    width: 20%;
+}
+
+.text-red {
+    color: rgba(255, 0, 0, 0.8);
+}
+
+span.hidden {
+    display: none;
+}
+
+span.show {
+    display: block;
+}
